@@ -1,16 +1,20 @@
 #include <stdio.h>
 
 int test(){
-    printf("test()\n");
-    return 42;
+    printf("begin of test()\n");
+    int a = 1, b = 2, c = 3;
+    int i = (a += 3, a + c);
+    printf("\ta = %d\tb = %d\tc = %d\ti = %d\n", a, b, c, i);
+    printf("end of test()\n");
+    return a, b, c, i;
 }
 
 void main(){
     int a = 1, b = 0;
-    printf("a = %d\tb = %d\n", a, b);
+    printf("\ta = %d\tb = %d\n", a, b);
     b = test(), a;
-    printf("a = %d\tb = %d\n", a, b);
+    printf("\ta = %d\tb = %d\n", a, b);
     b = 0, a = 1;
     b = (test(), a);
-    printf("a = %d\tb = %d\n", a, b);
+    printf("\ta = %d\tb = %d\n", a, b);
 }
