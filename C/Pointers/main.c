@@ -1,19 +1,25 @@
 
 #include <stdio.h>
 
-void changeValue(int *ptr){
-    *ptr = (printf("changed\n"), 24);
+void func1(){
+    printf("Hello from func1\n");
+}
+
+void func2(){
+    printf("Hello again from func2\n");
+}
+
+//receive a pointer to a pointer to a function
+void changeValue(void (**ptr)()){
+    //set pointer of pointer to func2
+    *ptr = (printf("changed\n"), &func2);
 }
 
 void main (){
-   int  var = 42;
-   int  *ptr;
-   ptr = &var;
+    void (*ptr)(); //pointer to "void function()"
+    ptr = &func1; //ptr -> func1
 
-   printf("Address of var: %x\n", &var  );
-   printf("Address in ptr: %x\n\n", ptr );
-
-   printf("Value of *ptr before:  %d\n", *ptr );
-   changeValue(ptr);
-   printf("Value of *ptr after:  %d\n", *ptr );
+    ptr(); //func1()
+    changeValue(&ptr); //passing ptr memory address
+    ptr(); //func2()
 }
