@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <assert.h>
 
 void func1(int *a){
@@ -15,7 +14,7 @@ void changeValue(void (**ptr)()){
     *ptr = &func2;
 }
 
-void main (){
+int main (){
     int a = 0;
     void (*ptr)(); //pointer to "void function()"
     ptr = &func1; //ptr -> func1
@@ -29,4 +28,6 @@ void main (){
 
     ptr(&a); //func2()
     assert(a == 2);
+    
+    return 0;
 }
