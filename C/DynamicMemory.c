@@ -10,7 +10,7 @@ int main(){
 
     assert(!(ptr == NULL));
 
-    int i;o
+    int i;
     for (i = 0; i < size; i++) {
       *ptr = i;
       ptr++;
