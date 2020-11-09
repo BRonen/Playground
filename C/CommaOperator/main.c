@@ -1,20 +1,21 @@
 #include <stdio.h>
+#include <assert.h>
 
 int test(){
-    printf("begin of test()\n");
     int a = 1, b = 2, c = 3;
-    int i = (a += 3, a + c);
-    printf("\ta = %d\tb = %d\tc = %d\ti = %d\n", a, b, c, i);
-    printf("end of test()\n");
-    return a, b, c, i;
+    int d = (a += 3, a + c);
+    assert(d == 7);
+    return a, b, c, d;
 }
 
 void main(){
     int a = 1, b = 0;
-    printf("\ta = %d\tb = %d\n", a, b);
+
     b = test(), a;
-    printf("\ta = %d\tb = %d\n", a, b);
-    b = 0, a = 1;
+    assert(b == test());
+
+    a = 1, b = 0;
+
     b = (test(), a);
-    printf("\ta = %d\tb = %d\n", a, b);
+    assert(b == a);
 }

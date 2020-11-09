@@ -1,10 +1,14 @@
 #include <stdio.h>
+#include <assert.h>
 
-void main(){
+int main(){
 	int a = 2147483647;
-	printf("%d\n", a);
-	printf("%d\n", ++a);
-	int b = 4294967295;
-	printf("%d\n", b);
-	printf("%d\n", ++b);
+    assert(a == 2147483647);
+	assert(++a == -2147483648);
+
+    a = 4294967295;
+	assert(a == -1);
+	assert(++a == 0);
+
+    return 0
 }
