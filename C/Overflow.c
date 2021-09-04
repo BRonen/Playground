@@ -9,5 +9,5 @@ int main(){
     assert(a == -1);
     assert(++a == 0);
 
-    return 0
+    return 0;
 }

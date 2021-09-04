@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned int hashCode(char *key, unsigned int hashSize) {
+static unsigned int hashCode(char *key, unsigned int hashSize) {
   unsigned long hash = 5381;
   unsigned int c;
   while((c = *key++)) {
@@ -85,14 +85,19 @@ void hashtableDelete(struct HashTable *hashtable, char *key){
   unsigned int index = hashCode(key, hashtable->length);
   struct Node *node = hashtable->list[index];
   
+  //if first node from linkedlist of this index
+  //is the key we search then swap with the next
   if(strcmp(node->key, key) == 0){
     hashtable->list[index] = node->next;
     free(node);
+    return;
   }
 
-  while(node) {
+  //while not in the end, get the next node as *ptr
+  //when get the right node then swap with next
+  while(node){
     struct Node *ptr = node->next;
-    if(strcmp(node->key, key) == 0){
+    if(strcmp(ptr->key, key) == 0){
       node->next = ptr->next;
       free(ptr);
     }

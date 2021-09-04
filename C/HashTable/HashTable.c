@@ -3,7 +3,7 @@
 #include "HashTable.h"
 
 int main() {
-  struct HashTable *hash = hashtableCreate(50);
+  struct HashTable *hash = hashtableCreate(5);
 
   //hashtableDump(hash);
 
@@ -29,6 +29,10 @@ int main() {
   hashtableInsert(hash, "hello", "world2");
   //hashtableDump(hash);
   assert(strcmp(hashtableSearch(hash, "hello"), "world2") == 0);
+
+  hashtableDelete(hash, "&*@#)");
+  //hashtableDump(hash);
+  assert(strcmp(hashtableSearch(hash, "&*@#)"), "") == 0);
 
   hashtableDelete(hash, "hello");
   //hashtableDump(hash);
