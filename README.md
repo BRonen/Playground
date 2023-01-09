@@ -5,3 +5,5 @@ Learning useful ways of thinking.
 - [ ] sorting algorithms
 - [ ] Balanced binary trees
 - [ ] B+Trees
+
+Still refactoring old code...
